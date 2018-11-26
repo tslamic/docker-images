@@ -1,0 +1,3 @@
+#!/usr/bin/env python
+from util import utils
+utils.exec_all_scripts("build", ".")

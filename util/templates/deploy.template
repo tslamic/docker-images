@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+{buildscript} && docker push {user}/{tag}:{version}

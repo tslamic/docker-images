@@ -1,0 +1,11 @@
+{
+  "gcloud_version":[
+    "226.0.0-slim"
+  ],
+  "node_version":[
+    "8.0.0",
+    "9.11.2"
+  ],
+  "maintainer":"github.com/tslamic",
+  "version":"node_version"
+}

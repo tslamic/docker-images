@@ -1,0 +1,38 @@
+version: 2
+
+executors:
+  pyhadolint:
+    working_directory: ~/app
+    docker:
+      - image: tslno/python-hadolint:1.15.0
+
+commands:
+  create-build:
+    steps:
+      - checkout
+      - run: pylint ~/app/util/
+      - run: ./create
+      - run: ./build
+
+jobs:
+  build:
+    executor: pyhadolint
+    steps:
+      - create-build
+  deploy:
+    executor: pyhadolint
+    steps:
+      - create-build
+      - run: ./deploy
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

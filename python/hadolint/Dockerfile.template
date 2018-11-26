@@ -1,0 +1,11 @@
+FROM python:{python_version}
+
+ENV HADOLINT /usr/local/hadolint
+ENV HADOLINT_VERSION {hadolint_version}
+RUN curl -sL -o ${{HADOLINT}} "https://github.com/hadolint/hadolint/releases/download/v$HADOLINT_VERSION/hadolint-$(uname -s)-$(uname -m)"
+ENV PATH $HADOLINT/$HADOLINT_VERSION/bin:$PATH
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends pylint={pylint_version} \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+hadolint --ignore SC1090 {dockerfile} \
+    && docker build -t {user}/{tag}:{version} {dockerfile_directory}

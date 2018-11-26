@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+import sys
+from util import utils
+args = sys.argv[1:]
+utils.create(args=args)
